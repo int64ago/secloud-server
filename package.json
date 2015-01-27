@@ -1,0 +1,20 @@
+{
+  "name": "secloud-server",
+  "version": "0.0.9",
+  "author": "Cody Chan <int64ago@gmail.com>",
+  "description": "Server of SECloud",
+  "dependencies": {
+    "express": "4.11.1",
+    "express-session": "1.10.1",
+    "body-parser": "1.10.2",
+    "qiniu": "6.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/int64ago/secloud-server.git"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "license": "MIT"
+}
