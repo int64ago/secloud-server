@@ -9,6 +9,10 @@ function getFileList(marker, files, callback){
     if(marker || (!marker && !files[0])){
         qiniu.rsf.listPrefix(config.qiniu.bucket, null, marker, null, function(err, ret) {
             if (!err) {
+                if(!ret.items[0]){
+                   callback(files);
+                   return;
+                }
                 for(var index in ret.items){
                     files.push({
                         name: ret.items[index].key,
