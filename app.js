@@ -50,6 +50,18 @@ app.post('/delete', function(req, res){
     }
 });
 
+app.post('/move', function(req, res){
+    if(!req.session.views){
+        res.sendStatus(401);
+    }else if(req.body.keySrc && req.body.keyDest){
+        op.moveFile(req.body.keySrc, req.body.keyDest, function(ret){
+            res.sendStatus(200);
+        });
+    }else{
+        res.sendStatus(400);
+    }
+});
+
 app.get('/list', function(req, res){
     if(req.session.views){
         op.getFileList('', [], function(files){

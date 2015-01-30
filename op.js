@@ -40,6 +40,17 @@ function deleteFile(key, callback){
     });
 }
 
+function moveFile(keySrc, keyDest, callback){
+    client.move(config.qiniu.bucket, keySrc,
+                config.qiniu.bucket, keyDest, function(err, ret){
+        if(!err){
+            callback(ret);
+        }else{
+            console.log(err);
+        }
+    });
+}
+
 function getUpToken(){
     var putPolicy = new qiniu.rs.PutPolicy(config.qiniu.bucket);
     return putPolicy.token();
@@ -53,5 +64,6 @@ function getDownloadUrl(key){
 
 exports.getFileList = getFileList;
 exports.deleteFile = deleteFile;
+exports.moveFile = moveFile;
 exports.getUpToken = getUpToken;
 exports.getDownloadUrl = getDownloadUrl;
